@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc mừng sinh nhật</title>
+    <!-- Liên kết tệp CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="input-section">
+        <h2>Nhập mật khẩu</h2>
+        <input type="password" id="password" maxlength="6" placeholder="Nhập mật khẩu 6 số">
+        <br>
+        <button onclick="checkPassword()">Xác nhận</button>
+        <p id="error-message" style="display: none;">Sai mật khẩu! Vui lòng thử lại.</p>
+    </div>
+
+    <div id="message-section">
+        <h1>Sweetie 20, bani <3</h1>
+        <img src="bani.jpg" alt="Hình ảnh chúc mừng">
+    </div>
+
+    <!-- Thêm phần bong bóng -->
+    <div id="bubbles"></div>
+
+    <script>
+        function checkPassword() {
+            var password = document.getElementById("password").value;
+            var errorMessage = document.getElementById("error-message");
+            
+            // Mật khẩu đúng là 110705
+            if (password === "110705") {
+                document.getElementById("input-section").style.display = "none";
+                document.getElementById("message-section").style.display = "block";
+                createBubbles(); // Gọi hàm tạo bong bóng
+            } else {
+                errorMessage.style.display = "block";
+            }
+        }
+
+        function createBubbles() {
+            const bubbleContainer = document.getElementById('bubbles');
+            
+            // Tạo 30 bong bóng
+            for (let i = 0; i < 30; i++) {
+                const bubble = document.createElement('div');
+                bubble.classList.add('bubble');
+                // Tạo kích thước ngẫu nhiên cho bong bóng
+                let size = Math.random() * 60 + 20 + 'px';
+                bubble.style.width = size;
+                bubble.style.height = size;
+                // Đặt vị trí ngẫu nhiên ngang trên màn hình
+                bubble.style.left = Math.random() * 100 + 'vw';
+                // Tạo độ trễ ngẫu nhiên để các bong bóng không xuất hiện cùng lúc
+                bubble.style.animationDelay = Math.random() * 5 + 's';
+                // Đặt thời gian di chuyển ngẫu nhiên
+                bubble.style.animationDuration = Math.random() * 3 + 2 + 's';
+                
+                bubbleContainer.appendChild(bubble);
+            }
+        }
+    </script>
+</body>
+</html>
